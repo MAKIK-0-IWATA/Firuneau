@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>架空ブランド（Firuneau）商品ページ改善提案</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Noto+Sans+JP:wght@300;400;500&family=Noto+Serif+JP:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css?v=1">
+  <script src="script.js?v=1" defer></script>
+</head>
+<body>
+
+  <header data-part="compare-header" id="part-compare-header" class="compare-header">
+    <h1>架空ブランド（Firuneau）商品ページ改善提案</h1>
+    <p>After側の右に、改善点とその理由（①〜⑧）を添えています。</p>
+    <p>※写真はAI生成のイメージです（実在の商品ではありません）</p>
+  </header>
+
+  <main class="compare-container">
+
+    <!-- Before 側：よくあるシンプルな商品ページ（画像は白背景1枚だけ） -->
+    <div class="device-frame-wrapper">
+      <div class="device-label">Before<span>よくあるシンプルな商品ページ</span></div>
+      <div class="device-frame" data-part="before-page" id="part-before-page">
+        <div class="device-screen before-screen">
+          <div class="b-img">
+            <img src="images/white.jpg" width="900" height="900" alt="K10一粒ダイヤネックレスの白背景写真（AI生成のイメージ）">
+          </div>
+          <div class="b-content">
+            <h2 class="b-title">K10 一粒ダイヤ ネックレス</h2>
+            <p class="b-price">32,800円</p>
+            <button type="button" class="b-btn">カートに入れる</button>
+            <div class="b-desc">
+              <p>K10イエローゴールドに天然ダイヤモンドをあしらったネックレスです。</p>
+              <p>素材: K10, ダイヤモンド</p>
+            </div>
+            <p class="b-review">レビュー件数: 0件</p>
+          </div>
+        </div>
+      </div>
+      <p class="b-note">問題点：サイズ感・質感・素材の詳細・ギフト対応・返品や保証が、このページだけでは分からない</p>
+    </div>
+
+    <!-- After 側：商品の魅力を解説した改善案（枠内スクロールにせず、ページ全体が伸びる） -->
+    <div class="device-frame-wrapper">
+      <div class="device-label">After<span>商品の魅力を解説した改善案</span></div>
+      <div class="device-frame">
+        <div class="device-screen after-screen">
+
+          <!-- ① ファーストビュー -->
+          <section data-part="fv-main-image" id="part-fv-main-image" class="after-section fv">
+            <div class="side-note"><div class="badge">①</div><div class="side-text"><strong>ファーストビュー</strong><p>着用・白背景・拡大をタップで切り替え。送料・ギフト対応・アジャスターを価格の近くに。</p><p class="why"><b>理由</b>画面では手に取れない商品なので、見る角度を増やし、迷いやすい点を最初の1画面で答えるため。</p></div></div>
+            <div class="a-img-main">
+              <img class="view is-on" data-view="wear" src="images/wear.jpg" width="725" height="900" alt="首元に着けた着用イメージ（AI生成のイメージ）">
+              <img class="view" data-view="white" src="images/white.jpg" width="900" height="900" alt="白背景の商品写真（AI生成のイメージ）">
+              <img class="view" data-view="zoom" src="images/zoom.jpg" width="900" height="671" alt="ペンダントの拡大写真（AI生成のイメージ）">
+            </div>
+            <div class="a-thumb-list" role="group" aria-label="画像の切り替え">
+              <button type="button" class="a-thumb is-on" data-target="wear" aria-label="着用イメージを表示"><img src="images/wear.jpg" width="72" height="72" alt=""><span>着用</span></button>
+              <button type="button" class="a-thumb" data-target="white" aria-label="白背景を表示"><img src="images/white.jpg" width="72" height="72" alt=""><span>白背景</span></button>
+              <button type="button" class="a-thumb" data-target="zoom" aria-label="拡大を表示"><img src="images/zoom.jpg" width="72" height="72" alt=""><span>拡大</span></button>
+            </div>
+            <div class="a-info">
+              <p class="a-brand">Firuneau</p>
+              <h2 class="a-title">K10 一粒ダイヤ ネックレス</h2>
+              <p class="a-price">¥32,800 <span class="a-tax">税込</span></p>
+              <div class="a-tags">
+                <span class="a-tag">送料無料</span>
+                <span class="a-tag">ギフト対応</span>
+                <span class="a-tag">アジャスター付き</span>
+              </div>
+              <button type="button" class="a-btn">カートに追加する</button>
+            </div>
+          </section>
+
+          <!-- ② 3つのこだわり -->
+          <section data-part="key-points" id="part-key-points" class="after-section bg-light">
+            <div class="side-note"><div class="badge">②</div><div class="side-text"><strong>3つのこだわり</strong><p>素材・着け心地・ギフトをアイコンつきの3項目に整理。</p><p class="why"><b>理由</b>スマホでは読み飛ばされやすいため、流し読みでも「どんな商品か」が分かる形にする。</p></div></div>
+            <div class="sec-head"><p class="kicker">FEATURES</p><h3 class="section-title">3つのこだわり</h3></div>
+            <div class="points-grid">
+              <div class="point-item">
+                <div class="point-icon">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linejoin="round" aria-hidden="true"><!-- 石つきのリング --><circle cx="12" cy="16" r="6" stroke-width="1"/><path d="M9 4h6l2 2.5-5 3.5-5-3.5z M7 6.5h10 M10.5 4l1.5 6 1.5-6" stroke-width="1"/></svg>
+                </div>
+                <h4 class="point-title">K10イエローゴールド</h4>
+                <p class="point-desc">ゴールドを約42％含む素材。</p>
+              </div>
+              <div class="point-item">
+                <div class="point-icon">
+                  <img src="images/icon-light.jpg" width="240" height="240" alt="" aria-hidden="true"><!-- 左向きの女性・ロングヘアが少しなびく（AI生成の線画。白を multiply で透かす） -->
+                </div>
+                <h4 class="point-title">軽やかな着け心地</h4>
+                <p class="point-desc">日常使いしやすい、控えめな大きさ。</p>
+              </div>
+              <div class="point-item">
+                <div class="point-icon">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true"><rect x="4" y="9" width="16" height="11" rx="2" stroke-width="1"/><path d="M12 9v11M4 13h16M12 9c-4-1-5-5-2-5 2 0 2 3 2 5zm0 0c4-1 5-5 2-5-2 0-2 3-2 5z" stroke-width="1"/></svg>
+                </div>
+                <h4 class="point-title">ギフトにも</h4>
+                <p class="point-desc">特別な日の贈り物に。</p>
+              </div>
+            </div>
+          </section>
+
+          <!-- ③ サイズガイド -->
+          <section data-part="size-guide" id="part-size-guide" class="after-section">
+            <div class="side-note"><div class="badge">③</div><div class="side-text"><strong>サイズガイド</strong><p>40cm／45cmを首元の図2枚で比較。ペンダントは1円玉との比率で表示。</p><p class="why"><b>理由</b>数字だけでは大きさを想像しにくい。「思っていたより小さい／大きい」を減らすことを狙う。</p></div></div>
+            <div class="sec-head"><p class="kicker">SIZE GUIDE</p><h3 class="section-title">長さと大きさ</h3></div>
+            <p class="guide-text">チェーンは40cm＋5cmのアジャスター。40cmと45cmの2通りに長さを調整できます。</p>
+            <div class="length-cards">
+              <figure class="length-card">
+                <svg viewBox="0 0 128 116" role="img" aria-label="40cmに設定した場合、ペンダントが鎖骨の近くに来る図（イメージ）">
+                  <path d="M0 116V95c20-14 42-19 48-29V0h32v66c6 10 28 15 48 29v21Z" fill="#ece0d2"/>
+                  <path d="M31 70q10 24 33 29 23-5 33-29" fill="none" stroke="#B09B71" stroke-width="2"/>
+                  <circle cx="64" cy="99" r="3.5" fill="#fff" stroke="#B09B71" stroke-width="1.5"/>
+                </svg>
+                <figcaption><strong>40cm</strong><span>鎖骨の近く</span></figcaption>
+              </figure>
+              <figure class="length-card">
+                <svg viewBox="0 0 128 116" role="img" aria-label="45cmに設定した場合、ペンダントが40cmより低い位置に来る図（イメージ）">
+                  <path d="M0 116V95c20-14 42-19 48-29V0h32v66c6 10 28 15 48 29v21Z" fill="#ece0d2"/>
+                  <path d="M22 65q14 39 42 47 28-8 42-47" fill="none" stroke="#B09B71" stroke-width="2"/>
+                  <circle cx="64" cy="111" r="3.5" fill="#fff" stroke="#B09B71" stroke-width="1.5"/>
+                </svg>
+                <figcaption><strong>45cm</strong><span>少しゆとりのある位置</span></figcaption>
+              </figure>
+            </div>
+            <p class="small-text center">※ 着用位置は首まわりや体型によって変わります。図はイメージです。</p>
+            <div class="guide-block mt-4">
+              <h4 class="guide-subtitle">ペンダントトップの大きさ</h4>
+              <svg viewBox="0 0 270 116" role="img" aria-label="直径20mmの1円玉と、直径約3mmのペンダントの石を並べた比率の図" class="coin-svg">
+                <circle cx="76" cy="52" r="38" fill="#f7f7f4" stroke="#b8b8b2" stroke-width="2"/>
+                <text x="76" y="57" text-anchor="middle" font-size="12" fill="#74746e">1円玉</text>
+                <circle cx="197" cy="52" r="5.7" fill="#fafbf9" stroke="#B09B71" stroke-width="2.5"/>
+                <text x="76" y="105" text-anchor="middle" font-size="11" fill="#6b675f">直径 20mm</text>
+                <text x="197" y="105" text-anchor="middle" font-size="11" fill="#6b675f">石の直径 約3mm</text>
+              </svg>
+              <p class="small-text center">硬貨と比べた比率の目安です。</p>
+            </div>
+          </section>
+
+          <!-- ④ 質感 -->
+          <section data-part="texture-zoom" id="part-texture-zoom" class="after-section bg-light">
+            <div class="side-note"><div class="badge">④</div><div class="side-text"><strong>ディテール</strong><p>地金の仕上げと石の表情が見える拡大写真を配置。</p><p class="why"><b>理由</b>高価格帯の商品は、写真と実物の印象差が不安のもとになりやすいため。</p></div></div>
+            <div class="sec-head"><p class="kicker">TEXTURE</p><h3 class="section-title">ディテール</h3></div>
+            <img class="photo" src="images/zoom.jpg" width="900" height="671" loading="lazy" alt="ペンダントの拡大写真。地金の質感と石のきらめき（AI生成のイメージ）">
+            <p class="photo-caption">肌になじみやすい、やわらかな金の色味。</p>
+          </section>
+
+          <!-- ⑤ 素材・金属アレルギー -->
+          <section data-part="material-allergy" id="part-material-allergy" class="after-section">
+            <div class="side-note"><div class="badge">⑤</div><div class="side-text"><strong>素材とアレルギー表記</strong><p>地金・石・刻印・ニッケルの使用有無を表にし、アレルギーは「医師への相談」を案内。</p><p class="why"><b>理由</b>「起きない」と断定せず、正確に書くことで安心して検討してもらうことを狙う。</p></div></div>
+            <div class="sec-head"><p class="kicker">MATERIAL &amp; CARE</p><h3 class="section-title">素材について</h3></div>
+            <dl class="spec-table">
+              <div><dt>地金</dt><dd>K10イエローゴールド</dd></div>
+              <div><dt>石</dt><dd>天然ダイヤモンド（約0.1ct）</dd></div>
+              <div><dt>刻印</dt><dd>留め具にK10の刻印あり</dd></div>
+              <div><dt>ニッケルの使用有無</dt><dd>商品ごとに明記</dd></div>
+            </dl>
+            <div class="allergy-box">
+              <h4 class="allergy-title">金属アレルギーについて</h4>
+              <p class="allergy-text">体質によっては、金属に反応が出る場合があります。金属アレルギーのある方・ご心配な方は、ご購入前に医師にご相談いただくことをおすすめします。</p>
+            </div>
+          </section>
+
+          <!-- ⑥ ギフト -->
+          <section data-part="gift" id="part-gift" class="after-section bg-light">
+            <div class="side-note"><div class="badge">⑥</div><div class="side-text"><strong>ギフト</strong><p>箱の写真と、“for you” のメッセージカードのイメージを表示。</p><p class="why"><b>理由</b>贈り物として買う人は「そのまま渡せるか」を確かめたい。渡す場面を想像しやすくする狙い。</p></div></div>
+            <div class="sec-head"><p class="kicker">GIFT</p><h3 class="section-title">大切な人への贈り物に</h3></div>
+            <img class="photo" src="images/gift.jpg" width="900" height="671" loading="lazy" alt="ギフトボックスに入ったネックレスと、無地のメッセージカード（AI生成のイメージ）">
+            <p class="guide-text">専用のギフトボックスに入れてお届けします。メッセージカードもお選びいただけます。</p>
+            <div class="msg-card" aria-label="メッセージカードのイメージ">
+              <p class="msg-for">for you</p>
+              <p class="msg-line">いつもありがとう。</p>
+              <p class="msg-sub">メッセージの文面は、カート画面でご入力いただけます（イメージ）</p>
+            </div>
+          </section>
+
+          <!-- ⑦ 保証・返品 -->
+          <section data-part="warranty-return" id="part-warranty-return" class="after-section">
+            <div class="side-note"><div class="badge">⑦</div><div class="side-text"><strong>保証・返品・お手入れ</strong><p>保証期間・返品の条件・お手入れ方法を3項目で明記。</p><p class="why"><b>理由</b>高価格帯ほど「失敗したらどうなるか」が購入前の壁になる。そこを先に答えておくことを狙う。</p></div></div>
+            <div class="sec-head"><p class="kicker">AFTER CARE</p><h3 class="section-title">保証・返品・お手入れ</h3></div>
+            <ul class="policy-list">
+              <li>
+                <strong>修理保証（1年）</strong>
+                <p>お買い上げから1年間、通常のご使用で生じた不具合は無償で修理します（紛失・お客さまの過失による破損は対象外です）。</p>
+              </li>
+              <li>
+                <strong>返品・交換対応</strong>
+                <p>イメージと異なった場合、未使用に限り到着後7日以内であれば返品を承ります（返送料はお客様負担）。</p>
+              </li>
+              <li>
+                <strong>お手入れ方法</strong>
+                <p>着用後は柔らかい布で優しく拭き、付属のポーチに入れて保管してください。</p>
+              </li>
+            </ul>
+            <p class="small-text center">※保証・返品の条件は本サンプル用の例です。</p>
+          </section>
+
+          <!-- ⑧ レビュー -->
+          <section data-part="review-summary" id="part-review-summary" class="after-section bg-light">
+            <div class="side-note"><div class="badge">⑧</div><div class="side-text"><strong>お客さまの声</strong><p>平均点と、使うシーンが分かる一言（架空の例）。</p><p class="why"><b>理由</b>自分に近い人の感想が、判断の助けになりやすいため。</p></div></div>
+            <div class="sec-head"><p class="kicker">REVIEWS</p><h3 class="section-title">お客さまの声</h3></div>
+            <div class="review-score">★★★★★ <span class="score-num">4.8</span></div>
+            <div class="review-card">
+              <div class="stars">★★★★★</div>
+              <p class="review-text">「さりげない大きさで、仕事中もつけやすいです。アジャスターで服に合わせて長さを変えられるのも嬉しいポイントです。」</p>
+              <p class="review-meta">30代 女性</p>
+            </div>
+            <p class="small-text center">※架空のレビュー例です</p>
+          </section>
+
+        </div>
+      </div>
+    </div>
+
+  </main>
+
+
+  <footer data-part="footer" class="site-footer">
+    <p>Firuneauは架空のブランドです。</p>
+    <p>※提案用の試作であり、納品実績ではありません。</p>
+    <p>※制作にはAIツールも併用しています。構成の確認と最終判断は自身で行っています。</p>
+  </footer>
+</body>
+</html>

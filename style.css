@@ -1,0 +1,304 @@
+/* 色・余白・フォントは :root にまとめる（配色の差し替えはここだけ） */
+:root {
+  --c-bg-base: #F8F7F5;
+  --c-bg-light: #FAFAFA;
+  --c-white: #FFFFFF;
+  --c-text-main: #2C2C2C;
+  --c-text-sub: #666666;
+  --c-border: #E5E5E5;
+  --c-accent: #B09B71;      /* 上品なゴールド系（Gemini案） */
+  --c-accent-deep: #8A7547; /* 小さい文字用。白地でも読めるよう濃いめ */
+  --c-badge: #4A4A4A;
+
+  --font-serif: 'Cormorant Garamond', 'Noto Serif JP', serif;
+  --font-serif-jp: 'Noto Serif JP', serif;
+  --font-sans: 'Noto Sans JP', sans-serif;
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+body {
+  margin: 0;
+  font-family: var(--font-sans);
+  color: var(--c-text-main);
+  background-color: var(--c-bg-base);
+  line-height: 1.7;
+  -webkit-font-smoothing: antialiased;
+}
+h1, h2, h3, h4, p, ul, dl, dd, figure { margin: 0; padding: 0; }
+svg { display: block; }
+img { display: block; max-width: 100%; height: auto; }
+
+/* ---- 見出しの型（GPT案のタイポグラフィ：小さい英字ラベル＋明朝の見出し） ---- */
+.kicker {
+  font-family: var(--font-serif);
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: .24em;
+  color: var(--c-accent-deep);
+  text-transform: uppercase;
+}
+.sec-head { text-align: center; margin-bottom: 20px; }
+.section-title, .annotations-section h2 {
+  font-family: var(--font-serif-jp);
+  font-size: 19px;
+  font-weight: 500;
+  letter-spacing: .08em;
+  line-height: 1.5;
+  margin-top: 4px;
+}
+.annotations-section h2 { font-size: 20px; }
+
+/* ---- 共通ヘッダー ---- */
+.site-notice {
+  background: var(--c-text-main);
+  color: var(--c-white);
+  text-align: center;
+  font-size: 12px;
+  padding: 6px;
+}
+.compare-header { text-align: center; padding: 44px 20px 36px; }
+.compare-header h1 {
+  font-family: var(--font-serif-jp);
+  font-size: 26px;
+  font-weight: 500;
+  letter-spacing: .1em;
+  margin: 6px 0 12px;
+}
+.compare-header p:not(.kicker) { font-size: 13px; color: var(--c-text-sub); }
+
+/* ---- 2カラム（Before / After）。高さは固定せず、After の長さ分だけページが伸びる ---- */
+.compare-container {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: 40px;
+  align-items: start;
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 0 20px 60px;
+}
+.device-frame-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 14px;
+  min-width: 0;
+}
+.device-label {
+  font-family: var(--font-serif);
+  font-size: 22px;
+  font-weight: 600;
+  letter-spacing: .1em;
+  line-height: 1.2;
+  text-align: center;
+}
+.device-label span {
+  display: block;
+  font-family: var(--font-sans);
+  font-size: 12px;
+  font-weight: 400;
+  letter-spacing: .04em;
+  color: var(--c-text-sub);
+}
+.device-frame {
+  width: 100%;
+  max-width: 400px;
+  background: #111;
+  border: 12px solid #111;
+  border-radius: 40px;
+  box-shadow: 0 20px 40px rgba(0,0,0,0.08);
+  overflow: hidden; /* 角丸からはみ出さないため。高さは指定しない */
+}
+.device-screen { width: 100%; background: var(--c-white); }
+
+.b-note, .ai-note { font-size: 11px; color: #777; line-height: 1.6; }
+.b-note { max-width: 400px; background: #f1f1ef; padding: 10px 12px; border-radius: 4px; }
+.ai-note { text-align: center; margin: 8px 0 16px; }
+.device-frame-wrapper > .ai-note { max-width: 400px; margin-bottom: 0; }
+/* PCでは短い Before を画面に追従させ、長い After と見比べやすくする */
+.compare-container > .device-frame-wrapper:first-child { position: sticky; top: 16px; }
+
+/* ---- Before ---- */
+.b-content { padding: 24px 16px; }
+.b-title { font-size: 18px; margin-bottom: 12px; }
+.b-price { font-size: 18px; margin-bottom: 24px; }
+.b-btn {
+  width: 100%; padding: 14px;
+  background: #333; color: #fff; border: none;
+  font-size: 16px; /* iOS自動ズーム回避・タップ領域確保 */
+  margin-bottom: 32px; cursor: pointer;
+}
+.b-desc { font-size: 13px; color: #444; margin-bottom: 24px; }
+.b-review { font-size: 13px; color: #777; }
+
+/* ---- After ---- */
+.after-section {
+  position: relative;
+  padding: 44px 24px 36px;
+  border-bottom: 1px solid var(--c-border);
+}
+.after-section.fv { padding: 0 0 32px; }
+.bg-light { background-color: var(--c-bg-light); }
+
+.badge {
+  position: absolute; top: 14px; left: 12px;
+  width: 26px; height: 26px;
+  background-color: var(--c-badge); color: var(--c-white);
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 12px; font-weight: bold;
+  z-index: 10;
+}
+
+/* ① 切り替え画像（Claude案の仕組み）。着用だけ縦長なので、枠は正方形にそろえて切り替わっても高さが動かないようにする */
+.a-img-main { position: relative; aspect-ratio: 1 / 1; background: #eee9df; }
+.a-img-main .view { display: none; width: 100%; height: 100%; object-fit: cover; }
+.a-img-main .view.is-on { display: block; }
+.a-img-main .view[data-view="wear"] { object-position: 50% 100%; } /* 首元〜鎖骨が残るよう下側基準で切る */
+
+.a-thumb-list { display: flex; gap: 8px; padding: 12px 24px 0; }
+.a-thumb {
+  flex: 0 0 72px; min-width: 0;
+  padding: 0; background: none; font: inherit;
+  border: 1px solid var(--c-border);
+  cursor: pointer;
+  text-align: center;
+}
+.a-thumb img { width: 100%; height: 70px; object-fit: cover; }
+.a-thumb span { display: block; font-size: 11px; color: var(--c-text-sub); padding: 2px 0; }
+.a-thumb.is-on { border-color: var(--c-accent); }
+.a-thumb.is-on span { color: var(--c-text-main); }
+.a-thumb:focus-visible, .a-btn:focus-visible { outline: 2px solid var(--c-accent-deep); outline-offset: 2px; }
+
+.fv .ai-note, .fv .a-info { padding: 0 24px; }
+.a-info { margin-top: 20px; }
+.a-brand { font-family: var(--font-serif); font-size: 14px; letter-spacing: .24em; color: var(--c-accent-deep); margin-bottom: 4px; }
+.a-title { font-family: var(--font-serif-jp); font-size: 20px; font-weight: 500; letter-spacing: .04em; margin-bottom: 12px; }
+.a-price { font-family: var(--font-serif); font-size: 24px; font-weight: 600; margin-bottom: 14px; }
+.a-tax { font-family: var(--font-sans); font-size: 12px; font-weight: 400; color: var(--c-text-sub); }
+.a-tags { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 22px; }
+.a-tag { font-size: 11px; padding: 4px 8px; background: var(--c-border); border-radius: 2px; }
+.a-btn {
+  width: 100%; padding: 16px;
+  background: var(--c-text-main); color: var(--c-white);
+  border: none; font-size: 16px; letter-spacing: .08em; cursor: pointer;
+}
+
+/* ② */
+.points-grid { display: grid; gap: 24px; }
+.point-item { text-align: center; }
+.point-icon { width: 40px; height: 40px; margin: 0 auto 10px; color: var(--c-accent); }
+.point-icon img { width: 100%; height: 100%; mix-blend-mode: multiply; } /* 線画画像の白い背景を透かす */
+.point-title { font-size: 15px; margin-bottom: 4px; }
+.point-desc { font-size: 13px; color: var(--c-text-sub); }
+
+/* ③ サイズ（GPT案の2枚並び） */
+.guide-text { font-size: 13px; color: var(--c-text-sub); margin-bottom: 14px; }
+.small-text { font-size: 12px; color: var(--c-text-sub); }
+.center { text-align: center; }
+.length-cards { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 12px; margin-bottom: 8px; }
+.length-card { background: var(--c-bg-light); border: 1px solid var(--c-border); padding: 10px 10px 8px; text-align: center; }
+.length-card svg { width: 100%; height: auto; }
+.length-card strong { display: block; font-family: var(--font-serif); font-size: 22px; font-weight: 600; line-height: 1.2; margin-top: 6px; }
+.length-card span { font-size: 12px; color: var(--c-text-sub); }
+.guide-subtitle { font-size: 14px; margin-bottom: 8px; border-left: 3px solid var(--c-accent); padding-left: 8px; }
+.mt-4 { margin-top: 28px; }
+.coin-svg { width: 100%; height: auto; background: var(--c-bg-light); margin-bottom: 6px; }
+
+/* ④⑥ 写真 */
+.photo { width: 100%; height: auto; }
+
+/* ⑤ 素材 */
+.spec-table { font-size: 13px; margin-bottom: 20px; border-top: 1px solid var(--c-border); }
+.spec-table > div { display: grid; grid-template-columns: 8.5em minmax(0, 1fr); gap: 8px; padding: 10px 0; border-bottom: 1px solid var(--c-border); }
+.spec-table dt { color: var(--c-text-sub); }
+.allergy-box { background: #fff; border: 1px solid #ebd8d8; padding: 16px; border-radius: 4px; }
+.allergy-title { font-size: 13px; color: #944; margin-bottom: 8px; }
+.allergy-text { font-size: 12px; color: var(--c-text-sub); }
+
+/* ⑥ メッセージカード（GPT案の "for you"。HTMLとCSSで作る） */
+.msg-card {
+  max-width: 260px; margin: 22px auto 0;
+  background: #fffdf8; border: 1px solid #e7dfcf;
+  padding: 22px 20px; text-align: center;
+  transform: rotate(-2deg);
+  box-shadow: 0 6px 16px rgba(0,0,0,.06);
+}
+.msg-for { font-family: var(--font-serif); font-style: italic; font-size: 28px; color: var(--c-accent-deep); line-height: 1.2; }
+.msg-line { font-family: var(--font-serif-jp); font-size: 14px; margin-top: 8px; }
+.msg-sub { font-size: 10.5px; color: #8a8478; margin-top: 12px; }
+
+/* ⑦ */
+.policy-list { list-style: none; display: flex; flex-direction: column; gap: 16px; margin-bottom: 12px; }
+.policy-list li strong { display: block; font-size: 14px; margin-bottom: 4px; }
+.policy-list li p { font-size: 13px; color: var(--c-text-sub); }
+
+/* ⑧ */
+.review-score { text-align: center; font-size: 18px; color: var(--c-accent); margin-bottom: 18px; }
+.score-num { font-family: var(--font-serif); color: var(--c-text-main); font-weight: 600; }
+.review-card { background: var(--c-white); padding: 16px; border-radius: 4px; box-shadow: 0 2px 8px rgba(0,0,0,0.04); margin-bottom: 10px; }
+.stars { color: var(--c-accent); font-size: 14px; margin-bottom: 8px; }
+.review-text { font-size: 13px; margin-bottom: 10px; }
+.review-meta { font-size: 12px; color: var(--c-text-sub); text-align: right; }
+
+/* ---- 注釈（Claude案の Before／After／理由 の3点セット） ---- */
+.annotations-section { max-width: 900px; margin: 0 auto; padding: 0 20px 60px; }
+.annotations-section .sec-head { margin-bottom: 28px; }
+.annotations-grid { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 20px; }
+.annotation-item { display: flex; gap: 12px; background: var(--c-white); padding: 20px; border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.03); min-width: 0; }
+.badge-inline {
+  flex: 0 0 26px; width: 26px; height: 26px;
+  background: var(--c-badge); color: var(--c-white); border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 12px; font-weight: bold;
+}
+.annotation-text { min-width: 0; flex: 1; }
+.annotation-text strong { display: block; font-family: var(--font-serif-jp); font-size: 15px; font-weight: 500; margin-bottom: 8px; }
+.annotation-text dl { display: grid; grid-template-columns: 3.4em minmax(0, 1fr); gap: 6px 8px; font-size: 13px; }
+.annotation-text dt { font-size: 11px; font-weight: 500; text-align: center; align-self: start; margin-top: 3px; padding: 1px 0; border-radius: 2px; background: #eee; color: #555; }
+.annotation-text dt:nth-of-type(2) { background: #efe8d6; color: var(--c-accent-deep); }
+.annotation-text dt:nth-of-type(3) { background: var(--c-text-main); color: #fff; }
+.annotation-text dd { color: var(--c-text-sub); }
+
+/* ---- フッター（必須表記） ---- */
+.site-footer { text-align: center; padding: 36px 20px 44px; font-size: 12px; color: #666; border-top: 1px solid var(--c-border); line-height: 1.9; }
+
+/* ---- スマホ：端末の枠（ベゼル）を外して画面幅いっぱいに。縮小ではなく作り替え ---- */
+@media (max-width: 700px) {
+  .compare-container { grid-template-columns: minmax(0, 1fr); gap: 48px; padding: 0 0 48px; }
+  .device-frame-wrapper { gap: 12px; }
+  .device-frame { max-width: none; border: 0; border-radius: 0; box-shadow: none; background: var(--c-white); border-top: 1px solid var(--c-border); border-bottom: 1px solid var(--c-border); }
+  .b-note, .device-frame-wrapper > .ai-note { max-width: none; margin: 0 16px; }
+  .compare-container > .device-frame-wrapper:first-child { position: static; }
+  .annotations-grid { grid-template-columns: minmax(0, 1fr); }
+  .annotation-item { padding: 16px; }
+}
+
+/* ---- 番号バッジと改善点を端末の枠の外（右側）に出す（広い画面のみ） ----
+   枠の overflow:hidden をやめ、角丸は画面の上下の要素で作る。
+   右に改善点の欄（220px）を確保するため、3列目を空けておく */
+.side-text { display: none; }
+@media (min-width: 1180px), print {
+  .compare-container { grid-template-columns: 400px 400px 220px; max-width: 1180px; justify-content: center; }
+  .device-frame { overflow: visible; }
+  .device-screen { border-radius: 28px; }
+  .b-img, .a-img-main { border-radius: 28px 28px 0 0; overflow: hidden; }
+  .device-screen > :last-child { border-radius: 0 0 28px 28px; }
+  .after-screen .side-note { position: absolute; top: 18px; left: calc(100% + 40px); width: 220px; z-index: 10; }
+  .after-screen .side-note .badge { position: static; margin-bottom: 8px; }
+  .side-text { display: block; font-size: 12px; line-height: 1.7; color: var(--c-text-sub); border-left: 2px solid var(--c-accent); padding-left: 10px; }
+  .side-text strong { display: block; font-size: 13px; color: var(--c-text-main); margin-bottom: 2px; }
+  .side-text p { margin: 0; }
+  .side-text .why { margin-top: 6px; }
+  .side-text .why b { display: inline-block; font-size: 10px; font-weight: 500; background: var(--c-text-main); color: #fff; padding: 0 6px; border-radius: 2px; margin-right: 6px; }
+}
+
+/* 写真の下の説明（キャプション） */
+.photo-caption { font-size: 13px; color: var(--c-text-sub); text-align: center; margin: 10px 0 0; }
+
+/* ---- PDF書き出し用：画面（幅1280px）と同じ見た目を1枚の縦長PDFにする ---- */
+@media print {
+  @page { size: 1280px 4900px; margin: 0; }
+  html, body { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  .compare-container > .device-frame-wrapper:first-child { position: static; }
+  .device-frame { box-shadow: none; } /* 印刷では影が灰色の四角になるため消す */
+}
